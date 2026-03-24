@@ -11,6 +11,7 @@ subject_list = ["English", "Maths", "Music", "Business", "Science"]
 
 
 def main_menu():
+
     print("############################")
     print("The Study Centre")
     print("############################")
@@ -22,6 +23,7 @@ def main_menu():
     print("4. Check what needs studying next")
     print("5. View/Edit Subject List")
     print("6. Help/FAQ")
+
     while True:
         user_choice = input("Please select one of the following options above by entering a number between 1-6.")
         try:
@@ -32,6 +34,7 @@ def main_menu():
             int(user_choice)
         except ValueError:
             print("Invalid - please try again with an integer between 1-6.")
+
     if user_choice == 1:
         print("tbc")
     elif user_choice == 2:
@@ -46,6 +49,7 @@ def main_menu():
         print("tbc")
 
 def subject_editing(subject_list):
+
     print("############################")
     print("SUBJECT LIST EDITING/VIEWING")
     print("############################")
@@ -80,11 +84,23 @@ def subject_editing(subject_list):
         for subject in subject_list:
             print(subject)
         # add data validation for this (check if its y/n)
-        back_to_menu = input("Would you like to go back to the subject editing menu? Y/N")
-        if back_to_menu.lower() == "y":
-            subject_editing(subject_list)
-        elif back_to_menu.lower() == "n":
-            return None
+        while True:
+            back_to_menu = input("Would you like to go back to the subject editing menu? Y/N")
+            if back_to_menu.lower() == "y":
+                subject_editing(subject_list)
+            elif back_to_menu.lower() == "n":
+                return None
+            else:
+                print("Please enter Y or N.")
+        
+    elif option == 2:
+        print("tbc")
+
+    elif option == 3:
+        print("tbc")
+
+    elif option == 4:
+        print("tbc")
 
 
 def get_study_time():
