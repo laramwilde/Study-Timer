@@ -83,7 +83,8 @@ def subject_editing(subject_list):
             
         for subject in subject_list:
             print(subject)
-        # add data validation for this (check if its y/n)
+
+        # DATA VALIDATION TO CHECK IF ITS Y OR N
         while True:
             back_to_menu = input("Would you like to go back to the subject editing menu? Y/N")
             if back_to_menu.lower() == "y":
@@ -92,15 +93,39 @@ def subject_editing(subject_list):
                 return None
             else:
                 print("Please enter Y or N.")
-        
+
+    #REMOVE SUBJECTS FROM LIST 
     elif option == 2:
         print("tbc")
 
+    #ADD SUBJECTS TO THE LIST
     elif option == 3:
-        print("tbc")
+        print("###########################################")
+        print("Add a subject to the subjects list selected")
+        print("###########################################")
 
-    elif option == 4:
-        print("tbc")
+    while True:
+        users_added_subject = input("Enter the subject you would like to add to the list.")
+        if not users_added_subject:
+            print("The input is empty, please try again.")
+        else:
+            confirmation = input(f"Please confirm if you would like to add the subject {users_added_subject}. Y/N")
+            if confirmation.lower() == "y":
+                subject_list.append(users_added_subject)
+                print(f"Your subject ({users_added_subject}) has been added to the list.")
+                print("\nThe updated list:")
+                for subject in subject_list:
+                    print(subject)
+                break
+            elif confirmation.lower() == "n":
+                print("Subject not added.")
+                return None
+            else:
+                "You did not enter Y or N to confirm, please try again."
+
+    #QUIT
+   # elif option == 4:
+       # return None
 
 
 def get_study_time():
@@ -149,3 +174,6 @@ def convert_time(elapsed_time):
 #get_study_time()
 
 main_menu()
+
+
+
