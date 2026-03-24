@@ -64,7 +64,6 @@ def get_study_time():
 
 def convert_time(elapsed_time):
     elapsed_time = round(elapsed_time, 1)
-    print(f"TEST TEST TEST {elapsed_time}")
     #checks if the elapsed time is atleast one minute
     if elapsed_time < 60:
         more_than_one_min = False
@@ -76,8 +75,6 @@ def convert_time(elapsed_time):
         return False
     elif more_than_one_min == True:
         time_into_mins = elapsed_time / 60
-        print(f"TESTTESTTEST 2 {time_into_mins}")
-
         return time_into_mins
 
         
