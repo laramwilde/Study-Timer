@@ -39,7 +39,7 @@ def main_menu():
 
     #TIMED STUDY SESSION
     if user_choice == 1:
-        print("tbc")
+        get_study_time()
     #TRACK A STUDY SESSION
     elif user_choice == 2:
         print("tbc")
@@ -173,19 +173,20 @@ def subject_editing(subject_list):
             if not users_added_subject:
                 print("The input is empty, please try again.")
             else:
-                confirmation = input(f"Please confirm if you would like to add the subject {users_added_subject}. Y/N")
-                if confirmation.lower() == "y":
-                    subject_list.append(users_added_subject)
-                    print(f"Your subject ({users_added_subject}) has been added to the list.")
-                    print("\nThe updated list:")
-                    for subject in subject_list:
-                        print(subject)
-                    break
-                elif confirmation.lower() == "n":
-                    print("Subject not added.")
-                    return None
-                else:
-                    "You did not enter Y or N to confirm, please try again."
+                while True:
+                    confirmation = input(f"Please confirm if you would like to add the subject {users_added_subject}. Y/N")
+                    if confirmation.lower() == "y":
+                        subject_list.append(users_added_subject)
+                        print(f"Your subject ({users_added_subject}) has been added to the list.")
+                        print("\nThe updated list:")
+                        for subject in subject_list:
+                            print(subject)
+                        return None
+                    elif confirmation.lower() == "n":
+                        print("Subject not added.")
+                        return None
+                    else:
+                        "You did not enter Y or N to confirm, please try again."
     #QUIT
     elif option == 4:
         return None
