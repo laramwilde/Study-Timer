@@ -7,6 +7,8 @@
 
 import time
 
+
+#placeholder  list- this is only for testing
 subject_list = ["English", "Maths", "Music", "Business", "Science"]
 
 
@@ -35,18 +37,31 @@ def main_menu():
         except ValueError:
             print("Invalid - please try again with an integer between 1-6.")
 
+    #TIMED STUDY SESSION
     if user_choice == 1:
         print("tbc")
+    #TRACK A STUDY SESSION
     elif user_choice == 2:
         print("tbc")
+    #CHECK PREVIOUS STUDY SESSIONS
     elif user_choice == 3:
         print("tbc")
+    #CHECK WHAT NEEDS STUDYING NEXT
     elif user_choice == 4:
         print("tbc")
+    #VIEW/EDIT SUBJECT LIST
     elif user_choice == 5:
         subject_editing(subject_list)
+    #HELP/FAQ
     elif user_choice == 6:
         print("tbc")
+
+def display_numbered_list():
+    num = 0
+    for subject in subject_list:
+        num += 1
+        print(f"{num}. {subject}")
+
 
 def subject_editing(subject_list):
 
@@ -96,7 +111,56 @@ def subject_editing(subject_list):
 
     #REMOVE SUBJECTS FROM LIST 
     elif option == 2:
-        print("tbc")
+        
+        print("###########################################")
+        print("Remove a subject from subject list selected")
+        print("###########################################")
+
+        print("\nPlease choose an option:")
+        print("1. Display and remove a subject")
+        print("2. Quit")
+        while True:
+            remove_opt = int(input("Please enter a number (1 or 2)."))
+            if remove_opt == 1:
+                display_numbered_list()
+                print(f"\nUsing the numbers between 1-{len(subject_list)}, select what you would like to remove.")
+                user_remove_choice = input("")
+                while True:
+                    try:
+                        int(user_remove_choice)
+                    except ValueError:
+                        print("You did not enter a valid number,please try again!")
+                    else:
+                        user_remove_choice = int(user_remove_choice)
+                        if user_remove_choice >= 1 and user_remove_choice <= len(subject_list):
+                            break
+                        else:
+                            print(f"Please enter a number between 1 and {len(subject_list)}!")
+                print(f"You would like to remove {subject_list[user_remove_choice - 1]}")
+                while True:
+                    user_confirm = input("Confirm? Y/N")
+                    if user_confirm.lower() != "y" and user_confirm.lower() != "n":
+                        print("Please enter Y or N.")
+                    else:
+                        if user_confirm.lower() == "y":
+                            print(f"{subject_list[user_remove_choice - 1]} has been removed.")
+                            del subject_list[user_remove_choice - 1]
+                            print("Updated List:")
+                            for subject in subject_list:
+                                print(subject)
+                            return None
+                        else:
+                            print("Subject has not been deleted... quitting")
+                            return None
+                            
+
+                        
+            elif remove_opt == 2:
+                return None
+            else:
+                print("Invalid input. Please try again using the numbers 1 or 2.")
+
+
 
     #ADD SUBJECTS TO THE LIST
     elif option == 3:
@@ -104,28 +168,27 @@ def subject_editing(subject_list):
         print("Add a subject to the subjects list selected")
         print("###########################################")
 
-    while True:
-        users_added_subject = input("Enter the subject you would like to add to the list.")
-        if not users_added_subject:
-            print("The input is empty, please try again.")
-        else:
-            confirmation = input(f"Please confirm if you would like to add the subject {users_added_subject}. Y/N")
-            if confirmation.lower() == "y":
-                subject_list.append(users_added_subject)
-                print(f"Your subject ({users_added_subject}) has been added to the list.")
-                print("\nThe updated list:")
-                for subject in subject_list:
-                    print(subject)
-                break
-            elif confirmation.lower() == "n":
-                print("Subject not added.")
-                return None
+        while True:
+            users_added_subject = input("Enter the subject you would like to add to the list.")
+            if not users_added_subject:
+                print("The input is empty, please try again.")
             else:
-                "You did not enter Y or N to confirm, please try again."
-
+                confirmation = input(f"Please confirm if you would like to add the subject {users_added_subject}. Y/N")
+                if confirmation.lower() == "y":
+                    subject_list.append(users_added_subject)
+                    print(f"Your subject ({users_added_subject}) has been added to the list.")
+                    print("\nThe updated list:")
+                    for subject in subject_list:
+                        print(subject)
+                    break
+                elif confirmation.lower() == "n":
+                    print("Subject not added.")
+                    return None
+                else:
+                    "You did not enter Y or N to confirm, please try again."
     #QUIT
-   # elif option == 4:
-       # return None
+    elif option == 4:
+        return None
 
 
 def get_study_time():
